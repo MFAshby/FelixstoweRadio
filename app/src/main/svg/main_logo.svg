@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="557.02869"
+   height="394.40594"
    id="svg3039"
    version="1.1"
    inkscape:version="0.48.4 r9939"
@@ -75,9 +75,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="448.01601"
-     inkscape:cy="637.06078"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="351.48942"
+     inkscape:cy="151.99128"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -86,24 +86,24 @@
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
-     fit-margin-top="0.1"
-     fit-margin-right="0.1"
-     fit-margin-bottom="0.2"
-     fit-margin-left="0.1">
+     fit-margin-top="5"
+     fit-margin-right="5"
+     fit-margin-bottom="5"
+     fit-margin-left="5">
     <sodipodi:guide
-       position="0,0"
+       position="-95.954264,-395.83265"
        orientation="0,744.09448"
        id="guide4079" />
     <sodipodi:guide
-       position="744.09448,0"
+       position="648.14022,-395.83265"
        orientation="-1052.3622,0"
        id="guide4081" />
     <sodipodi:guide
-       position="744.09448,1052.3622"
+       position="648.14022,656.52955"
        orientation="0,-744.09448"
        id="guide4083" />
     <sodipodi:guide
-       position="0,1052.3622"
+       position="-95.954264,656.52955"
        orientation="1052.3622,0"
        id="guide4085" />
   </sodipodi:namedview>
@@ -115,14 +115,15 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-95.954264,-262.12357)">
     <g
        id="g4146">
       <path
@@ -291,9 +292,9 @@
          id="text4067"
          y="491.77765"
          x="328.96884"
-         style="font-size:40px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:-3.92999815999999980px;word-spacing:-3.15999924px;fill:#5fb9c6;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans Italic"
+         style="font-size:40px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:-3.92999816px;word-spacing:-3.15999913px;fill:#5fb9c6;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans Italic"
          xml:space="preserve"><tspan
-           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:-3.92999815999999980px;fill:#5fb9c6;fill-opacity:1;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans Italic;word-spacing:-3.15999924px"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:-3.92999816px;word-spacing:-3.15999913px;fill:#5fb9c6;fill-opacity:1;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans Italic"
            dx="0"
            y="491.77765"
            x="328.96884"

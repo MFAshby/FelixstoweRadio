@@ -2,28 +2,29 @@ package com.ashbysoft.felixstoweradio;
 
 import android.annotation.TargetApi;
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-/**
- * Background radio player
- */
 public class RadioService extends Service {
     private static final int NOTIFICATION_PLAYING = 1;
     private MediaPlayer player = null;
+    private ScheduledExecutorService pool;
 
-    /**
-     * Service - not bindable
-     */
     @Nullable @Override public IBinder onBind(Intent intent) {
         return null;
     }
@@ -44,22 +45,54 @@ public class RadioService extends Service {
         stopAndReleasePlayer();
         startPlayer();
         startNotification();
+
+        pool = Executors.newScheduledThreadPool(1);
+        pool.scheduleAtFixedRate(new Runnable() {
+            @Override public void run() {
+                updateNowPlaying();
+            }
+        }, 5, 5, TimeUnit.SECONDS);
+    }
+
+    private void updateNowPlaying() {
+        try {
+            RadioActivity.updateNowPlayingAndNextFromApi();
+        } catch (IOException e) {
+            //Not going to do anything about this
+        }
+
+        Notification notify = createNotification();
+        NotificationManager notificationManager = (NotificationManager)getApplicationContext()
+                .getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(NOTIFICATION_PLAYING, notify);
     }
 
     private void stop() {
         stopForeground(true);
         stopAndReleasePlayer();
+        if (pool != null) {
+            pool.shutdown();
+        }
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN) private void startNotification() {
-        // Also prep notification
-        Notification.Builder builder = new Notification.Builder(getApplicationContext());
-        Intent i = new Intent(getApplicationContext(), RadioActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification notification = builder.setContentTitle("Felixstowe Radio")
-                .setContentIntent(pendingIntent)
-                .build();
+    private void startNotification() {
+        Notification notification = createNotification();
         startForeground(NOTIFICATION_PLAYING, notification);
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN) @NonNull private Notification createNotification() {
+        Intent notificationIntent = new Intent(this, RadioActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+
+        Notification.Builder builder = new Notification.Builder(this);
+        return builder.setSmallIcon(R.drawable.status_bar)
+                   .setContentTitle(getString(R.string.app_name))
+                   .setContentText(RadioActivity.getNowPlaying())
+                   .setContentIntent(pendingIntent)
+                   .setWhen(System.currentTimeMillis())
+                   .build();
+
+
     }
 
     private void startPlayer() {

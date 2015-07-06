@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
 import android.view.View;
@@ -46,11 +47,9 @@ public class RadioActivity extends AppCompatActivity {
     private static final String PLAYING = RadioActivity.class.getName() + ".PLAYING";
     private boolean playing = false;
 
-    private static final String NOW_PLAYING = RadioActivity.class.getName() + ".NOW_PLAYING";
-    private String nowPlaying = "";
-
-    private static final String NEXT_PLAYING = RadioActivity.class.getName() + ".NEXT_PLAYING";
-    private String nextPlaying = "";
+    // Static so they don't get destroyed with the activity, and the service can use them.
+    private static String nowPlaying = "";
+    private static String nextPlaying = "";
 
     // For google calendar to access schedule
     private static final int REQUEST_ACCOUNT_PICKER = 1000;
@@ -59,9 +58,11 @@ public class RadioActivity extends AppCompatActivity {
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = { CalendarScopes.CALENDAR_READONLY };
 
+    // Used by the RadioService, outside the lifecycle of the activity.
+    private static com.google.api.services.calendar.Calendar mService;
+
     private final HttpTransport transport = AndroidHttp.newCompatibleTransport();
     private final JsonFactory jsonFactory = GsonFactory.getDefaultInstance();
-    private com.google.api.services.calendar.Calendar mService;
     private GoogleAccountCredential credential;
 
     /**
@@ -75,13 +76,8 @@ public class RadioActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             playing = savedInstanceState.getBoolean(PLAYING);
-            nowPlaying = savedInstanceState.getString(NOW_PLAYING);
-            nextPlaying = savedInstanceState.getString(NEXT_PLAYING);
-            //scheduleNextRefresh();
             updateTextViews();
-        } /*else {
-            refreshNowPlaying();
-        }*/
+        }
 
         if (playing) {
             play();
@@ -93,8 +89,6 @@ public class RadioActivity extends AppCompatActivity {
     @Override protected void onSaveInstanceState(Bundle b) {
         super.onSaveInstanceState(b);
         b.putBoolean(PLAYING, playing);
-        b.putString(NOW_PLAYING, nowPlaying);
-        b.putString(NEXT_PLAYING, nextPlaying);
     }
 
     /**
@@ -110,7 +104,7 @@ public class RadioActivity extends AppCompatActivity {
 
     private void pause() {
         stopService(getRadioServiceIntent());
-        ImageButton playButton = (ImageButton) findViewById(R.id.play_button);
+        FloatingActionButton playButton = (FloatingActionButton) findViewById(R.id.play_button);
         playButton.setImageResource(R.drawable.ic_play_arrow_black_48dp);
         playing = false;
     }
@@ -118,7 +112,7 @@ public class RadioActivity extends AppCompatActivity {
     private void play() {
         startService(getRadioServiceIntent());
 
-        ImageButton playButton = (ImageButton) findViewById(R.id.play_button);
+        FloatingActionButton playButton = (FloatingActionButton)findViewById(R.id.play_button);
         playButton.setImageResource(R.drawable.ic_pause_black_48dp);
         playing = true;
     }
@@ -161,15 +155,6 @@ public class RadioActivity extends AppCompatActivity {
                     "after installing, close and relaunch this app.", ""));
         }
     }
-
-    /*private void scheduleNextRefresh() {
-        // Schedule refresh of this info for 5 minutes time.
-        new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
-                refreshNowPlaying();
-            }
-        }, NOW_PLAYING_REFRESH_MILLIS);
-    }*/
 
     private void chooseAccount() {
         startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT_PICKER);
@@ -265,7 +250,8 @@ public class RadioActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                updateNowPlaying(getNowPlayingAndNextFromApi());
+                updateNowPlayingAndNextFromApi();
+                updateTextViews();
             } catch (final GooglePlayServicesAvailabilityIOException availabilityException) {
                 showGooglePlayServicesAvailabilityErrorDialog(
                         availabilityException.getConnectionStatusCode());
@@ -276,25 +262,29 @@ public class RadioActivity extends AppCompatActivity {
                         RadioActivity.REQUEST_AUTHORIZATION);
 
             } catch (Exception e) {
-
                 updateNowPlaying(new Pair<>("The following error occurred", e.getMessage()));
             }
             return null;
         }
 
-        private Pair<String, String> getNowPlayingAndNextFromApi() throws IOException {
-            DateTime now = new DateTime(System.currentTimeMillis());
-            Events events = mService.events().list("fxrdeanweb@gmail.com")
-                    .setMaxResults(2)
-                    .setTimeMin(now)
-                    .setOrderBy("startTime")
-                    .setSingleEvents(true)
-                    .execute();
+    }
 
-            List<Event> items = events.getItems();
-            return new Pair<>(getEventSummary(items.get(0)), getEventSummaryAndTime(items.get(1)));
-        }
+    /**
+     * Called both from this activity, and from the RadioService.
+     * Updates the nowPlaying and nextPlaying variables.
+     */
+    public static void updateNowPlayingAndNextFromApi() throws IOException {
+        DateTime now = new DateTime(System.currentTimeMillis());
+        Events events = mService.events().list("fxrdeanweb@gmail.com")
+                .setMaxResults(2)
+                .setTimeMin(now)
+                .setOrderBy("startTime")
+                .setSingleEvents(true)
+                .execute();
 
+        List<Event> items = events.getItems();
+        nowPlaying = getEventSummary(items.get(0));
+        nextPlaying = getEventSummaryAndTime(items.get(1));
     }
 
     private static String getEventSummary(Event evt) {
@@ -315,5 +305,21 @@ public class RadioActivity extends AppCompatActivity {
             String evtTime = SimpleDateFormat.getTimeInstance(DateFormat.SHORT).format(d);
             return String.format("%s (%s)", evt.getSummary(), evtTime);
         }
+    }
+
+    public static String getNowPlaying() {
+        return nowPlaying;
+    }
+
+    public static void setNowPlaying(String nowPlaying) {
+        RadioActivity.nowPlaying = nowPlaying;
+    }
+
+    public static String getNextPlaying() {
+        return nextPlaying;
+    }
+
+    public static void setNextPlaying(String nextPlaying) {
+        RadioActivity.nextPlaying = nextPlaying;
     }
 }

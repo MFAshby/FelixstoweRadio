@@ -8,4 +8,7 @@
     <string name="now">now</string>
     <string name="next">next</string>
     <string name="loading">Loading...</string>
+
+    <string name="currently_playing">Felixstowe Radio is playing</string>
+    <string name="logo_description">Felixtowe Radio Logo</string>
 </resources>
