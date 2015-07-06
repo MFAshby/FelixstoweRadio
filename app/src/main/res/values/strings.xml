@@ -5,4 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="play">Play</string>
     <string name="pause">Pause</string>
+    <string name="now">now</string>
+    <string name="next">next</string>
+    <string name="loading">Loading...</string>
 </resources>
