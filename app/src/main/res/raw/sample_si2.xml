@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epg
+    xmlns="http://www.worlddab.org/schemas/spi/31"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xsi:schemaLocation="http://www.worlddab.org/schemas/spi/31 spi_31.xsd">
+ <schedule creationTime="2014-04-11T01:20:00+01:00" originator="Global Radio">
+  <programme id="crid://www.capitalfm.com/4772/5678" shortId="5678">
+   <longName>Capital Dawn</longName>
+   <location>
+    <time time="2015-07-17T16:00:00+01:00" duration="PT4H"/>
+   </location>
+  </programme>
+  <programme id="crid://www.capitalfm.com/4772/1190223" shortId="1190223">
+   <longName>Capital Breakfast</longName>
+   <location>
+    <time time="2015-07-17T20:00:00+01:00" duration="PT4H"/>
+   </location>
+  </programme>
+  <programme id="crid://www.capitalfm.com/4772/1234" shortId="1234">
+   <longName>Capital Lunch</longName>
+   <location>
+    <time time="2015-07-18T00:00:00+01:00" duration="PT4H"/>
+   </location>
+  </programme>
+ </schedule>
+</epg> 

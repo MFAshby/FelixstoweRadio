@@ -2,10 +2,8 @@ package com.ashbysoft.felixstoweradio;
 
 import android.annotation.TargetApi;
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -16,14 +14,10 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.io.IOException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class RadioService extends Service {
     private static final int NOTIFICATION_PLAYING = 1;
     private MediaPlayer player = null;
-    private ScheduledExecutorService pool;
 
     @Nullable @Override public IBinder onBind(Intent intent) {
         return null;
@@ -45,34 +39,11 @@ public class RadioService extends Service {
         stopAndReleasePlayer();
         startPlayer();
         startNotification();
-
-        pool = Executors.newScheduledThreadPool(1);
-        pool.scheduleAtFixedRate(new Runnable() {
-            @Override public void run() {
-                updateNowPlaying();
-            }
-        }, 5, 5, TimeUnit.SECONDS);
-    }
-
-    private void updateNowPlaying() {
-        try {
-            RadioActivity.updateNowPlayingAndNextFromApi();
-        } catch (IOException e) {
-            //Not going to do anything about this
-        }
-
-        Notification notify = createNotification();
-        NotificationManager notificationManager = (NotificationManager)getApplicationContext()
-                .getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFICATION_PLAYING, notify);
     }
 
     private void stop() {
         stopForeground(true);
         stopAndReleasePlayer();
-        if (pool != null) {
-            pool.shutdown();
-        }
     }
 
     private void startNotification() {
@@ -87,7 +58,7 @@ public class RadioService extends Service {
         Notification.Builder builder = new Notification.Builder(this);
         return builder.setSmallIcon(R.drawable.status_bar)
                    .setContentTitle(getString(R.string.app_name))
-                   .setContentText(RadioActivity.getNowPlaying())
+                   .setContentText("Now playing goes here")
                    .setContentIntent(pendingIntent)
                    .setWhen(System.currentTimeMillis())
                    .build();

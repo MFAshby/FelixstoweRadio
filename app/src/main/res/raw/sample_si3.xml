@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epg xml:lang="en" xmlns="http://www.worlddab.org/schemas/spi/31" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.worlddab.org/schemas/spi/31 spi_31.xsd">
+ <schedule creationTime="2015-04-17T16:21:56" originator="Global Radio">
+  <scope startTime="2015-04-17T22:00:00+01:00" stopTime="2015-04-19T00:00:00+01:00"/>
+  <programme id="crid://epg.musicradio.com/programmes/4677/2060805" shortId="2060805">
+   <shortName>Love</shortName>
+   <mediumName>Love Songs</mediumName>
+   <longName>Smooth Love Songs</longName>
+   <location>
+    <time actualDuration="PT4H0M" actualTime="2015-04-17T22:00:00+01:00" duration="PT4H0M" time="2015-04-17T22:00:00+01:00"/>
+   </location>
+   <mediaDescription>
+    <longDescription>Smooth Love Songs - the best love songs throughout the night. </longDescription>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="320" url="http://mediaweb.musicradio.com/ArtWork/SES/09c09726-b024-4804-b9a5-113a455d238f.png" width="600"/>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="2048" url="http://mediaweb.musicradio.com/ArtWork/SES/b522fb0a-a9d5-4252-b413-f214e749eaa2.jpg" width="2048"/>
+   </mediaDescription>
+   <memberOf id="crid://epg.musicradio.com/programmes/4677" shortId="4677"/>
+   <link uri="http://www.smoothradio.com/shows-presenters/smooth-love-songs"/>
+  </programme>
+  <programme id="crid://epg.musicradio.com/programmes/3176/2060806" shortId="2060806">
+   <shortName>Nights</shortName>
+   <mediumName>Overnights</mediumName>
+   <longName>Through The Night</longName>
+   <location>
+    <time actualDuration="PT4H0M" actualTime="2015-04-18T02:00:00+01:00" duration="PT4H0M" time="2015-04-18T02:00:00+01:00"/>
+   </location>
+   <mediaDescription>
+    <longDescription>Dave Brown takes you through the night with more of your Smooth favourites. From 2am.</longDescription>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="320" url="http://mediaweb.musicradio.com/ArtWork/SES/09c09726-b024-4804-b9a5-113a455d238f.png" width="600"/>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="2048" url="http://mediaweb.musicradio.com/ArtWork/SES/b522fb0a-a9d5-4252-b413-f214e749eaa2.jpg" width="2048"/>
+   </mediaDescription>
+   <memberOf id="crid://epg.musicradio.com/programmes/3176" shortId="3176"/>
+   <link uri="http://www.smoothradio.com/shows-presenters/through-the-night"/>
+  </programme>
+  <programme id="crid://epg.musicradio.com/programmes/3385/2060807" shortId="2060807">
+   <shortName>Eamonn</shortName>
+   <mediumName>Sat Breakfast</mediumName>
+   <longName>Saturday Breakfast</longName>
+   <location>
+    <time actualDuration="PT4H0M" actualTime="2015-04-18T06:00:00+01:00" duration="PT4H0M" time="2015-04-18T06:00:00+01:00"/>
+   </location>
+   <mediaDescription>
+    <longDescription>Wake up on Saturday with Eamonn Kelly from 6.00am. </longDescription>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="320" url="http://mediaweb.musicradio.com/ArtWork/SES/5bd014db-25ef-43d5-81e0-d346dc50364a.png" width="600"/>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="2048" url="http://mediaweb.musicradio.com/ArtWork/SES/42f7c08b-809f-4825-af3f-a9d038b63f1f.jpg" width="2048"/>
+   </mediaDescription>
+   <memberOf id="crid://epg.musicradio.com/programmes/3385" shortId="3385"/>
+   <link uri="http://www.smoothradio.com/shows-presenters/saturday-breakfast"/>
+  </programme>
+  <programme id="crid://epg.musicradio.com/programmes/3522/2060808" shortId="2060808">
+   <shortName>Saturday</shortName>
+   <mediumName>Smooth Saturday </mediumName>
+   <longName>Smooth Saturday with Myleene Klass</longName>
+   <location>
+    <time actualDuration="PT4H0M" actualTime="2015-04-18T10:00:00+01:00" duration="PT4H0M" time="2015-04-18T10:00:00+01:00"/>
+   </location>
+   <mediaDescription>
+    <longDescription>Join Myleene Klass every Saturday morning from 10.00am for a selection of great music and chat</longDescription>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="320" url="http://mediaweb.musicradio.com/ArtWork/SES/faeedf95-b337-4d73-97c3-7af00ac42585.png" width="600"/>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="2048" url="http://mediaweb.musicradio.com/ArtWork/SES/dc9e06e0-5120-4e05-95d6-4168ce971dde.jpg" width="2048"/>
+   </mediaDescription>
+   <memberOf id="crid://epg.musicradio.com/programmes/3522" shortId="3522"/>
+   <link uri="http://www.smoothradio.com/shows-presenters/smooth-saturday"/>
+  </programme>
+  <programme id="crid://epg.musicradio.com/programmes/3586/2076391" shortId="2076391">
+   <shortName>Saturday</shortName>
+   <mediumName>Saturday</mediumName>
+   <longName>Saturday Afternoon</longName>
+   <location>
+    <time actualDuration="PT4H0M" actualTime="2015-04-18T14:00:00+01:00" duration="PT4H0M" time="2015-04-18T14:00:00+01:00"/>
+   </location>
+   <mediaDescription>
+    <longDescription>Steve Colman brings your relaxing music mix every Saturday Afternoon from 2.00pm</longDescription>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="320" url="http://mediaweb.musicradio.com/ArtWork/SES/28caeff7-0b3d-462d-8271-8d59de3db8a3.png" width="600"/>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="2048" url="http://mediaweb.musicradio.com/ArtWork/SES/7e3ce2e8-da55-4e4a-9985-a0950228d7c7.jpg" width="2048"/>
+   </mediaDescription>
+   <memberOf id="crid://epg.musicradio.com/programmes/3586" shortId="3586"/>
+   <link uri="http://www.smoothradio.com/northeast/shows-presenters/saturday-afternoon"/>
+  </programme>
+  <programme id="crid://epg.musicradio.com/programmes/3524/2060811" shortId="2060811">
+   <shortName>Songbook</shortName>
+   <mediumName>British Songbook</mediumName>
+   <longName>The Great British Songbook</longName>
+   <location>
+    <time actualDuration="PT4H0M" actualTime="2015-04-18T18:00:00+01:00" duration="PT4H0M" time="2015-04-18T18:00:00+01:00"/>
+   </location>
+   <mediaDescription>
+    <longDescription>Join Paul Phear for The Great British Songbook, every Saturday evening from 6.00pm</longDescription>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="320" url="http://mediaweb.musicradio.com/ArtWork/SES/8ba5d394-dd32-4351-895d-1b2fdfd3804b.png" width="600"/>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="2048" url="http://mediaweb.musicradio.com/ArtWork/SES/5af63dbd-8ebd-44de-8d74-46ac112176ae.jpg" width="2048"/>
+   </mediaDescription>
+   <memberOf id="crid://epg.musicradio.com/programmes/3524" shortId="3524"/>
+   <link uri="http://www.smoothradio.com/shows-presenters/the-great-british-songbook"/>
+  </programme>
+  <programme id="crid://epg.musicradio.com/programmes/4677/2111540" shortId="2111540">
+   <shortName>Love</shortName>
+   <mediumName>Love Songs</mediumName>
+   <longName>Smooth Love Songs</longName>
+   <location>
+    <time actualDuration="PT2H0M" actualTime="2015-04-18T22:00:00+01:00" duration="PT2H0M" time="2015-04-18T22:00:00+01:00"/>
+   </location>
+   <mediaDescription>
+    <longDescription>Smooth Love Songs - the best love songs throughout the night. </longDescription>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="320" url="http://mediaweb.musicradio.com/ArtWork/SES/b4bc6ff5-e679-4ace-9bf4-8be22ea898a4.png" width="600"/>
+   </mediaDescription>
+   <mediaDescription>
+    <multimedia height="2048" url="http://mediaweb.musicradio.com/ArtWork/SES/b8c3de0f-f3d3-469e-82b1-eb76151f056f.jpg" width="2048"/>
+   </mediaDescription>
+   <memberOf id="crid://epg.musicradio.com/programmes/4677" shortId="4677"/>
+   <link uri="http://www.smoothradio.com/shows-presenters/smooth-love-songs"/>
+  </programme>
+ </schedule>
+</epg>
